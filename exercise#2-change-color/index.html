@@ -5,26 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <style>
-
         svg{
-            width: 30%;
+        width: 50%;
         }
-   
-   #one:hover{
-            fill: aqua;
-        }
-
-    #two:hover{
-            fill: aqua;
-    }
-
-    #three:hover{
-        fill: aqua;
-    }
-    
-    
     </style>
+
 </head>
 <body>
 <div id="pie"></div>
@@ -32,7 +19,7 @@
 </body>
 
 <script>
-
+let orgColor;
 document.addEventListener("DOMContentLoaded", loadSvg);
 
 
@@ -44,8 +31,29 @@ async function loadSvg(){
     console.log(mySvg);
 
     document.querySelector ("#pie").innerHTML= mySvg;
+    document.querySelector("#one").setAttribute("fill");
+    document.querySelector("#two").setAttribute("fill");
+    document.querySelector("#three").setAttribute("fill");
+   
     
 }
+
+document.querySelector("#pie").addEventListener("mouseover", showElement);
+function showElement(){
+    let myId = event.target.getAttribute("id"); 
+    orgColor = document.querySelector("#"+myId).getAttribute("fill");
+    document.querySelector("#"+myId).setAttribute("fill", "#bada55");
+    console.log(orgColor);
+}
+
+
+document.querySelector("#pie").addEventListener("mouseout", showColor);
+function showColor(){
+    let myId = event.target.getAttribute("id");
+    document.querySelector("#" + myId).setAttribute("fill", orgColor);
+    console.log(orgColor);
+}
+
 
 </script>
 </html>
