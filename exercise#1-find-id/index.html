@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    svg{
+        width: 50%;
+    }
+  div{
+      border: solid black 2px;
+      color: blue;
+      font-size: 24px;
+      text-align: center;
+  }
+    </style>
+</head>
+<body>
+    <div id="graphic"></div>
+
+    <div id="mrHankey">
+
+    </div>
+
+    </h1>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", loadSvg);
+let myJSON;
+     async function loadSvg() {	
+            let svgData = await fetch("layers.svg");
+            let svg = await svgData.text();
+
+            let jsonData = await fetch("shit.json");
+            myJSON = await jsonData.json();
+
+            console.log(myJSON)
+
+            document.querySelector("#graphic").innerHTML = svg;
+             }
+
+             document.querySelector("#graphic").addEventListener('click', showText);
+            function showText(){
+                let id = (event.target.id);
+                console.log(event.target);
+            
+
+            myJSON.forEach(element => {
+                if(id == element.id){
+                    console.log(element.text);
+                    document.querySelector("#mrHankey").innerHTML = element.text;
+                }
+            });
+        }
+
+</script>
+</html>
