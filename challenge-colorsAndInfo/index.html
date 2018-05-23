@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+        <div id="text"></div>
+        <div id="map"></div>
+<script>
+    let fillcolor;
+let newcolor = "#ca1";
+let areaId; 
+let myJson;
+let id;
+document.addEventListener("DOMContentLoaded", getData);
+async function getData(){
+
+const svgData = await fetch("map.svg");
+let mySvg = await svgData.text();
+
+document.querySelector("#map").innerHTML = mvg;
+
+
+
+
+
+document.querySelector("svg").addEventListener("mouseover", changeColor);
+
+document.querySelector("svg").addEventListener("mouseout", orgColor);
+}
+
+function changeColor(){
+    //what have I hovered?
+ let area = event.target;
+ areaId= area.id;
+ id = area.parentElement.id;
+fillcolor = area.getAttribute("fill");
+ document.querySelector("#"+areaId).setAttribute("fill", newColor);
+
+ myJson.forEach(element =>{
+//se if there is a match
+if(element.city == id) {
+
+}
+
+})
+//change color back on mouseout
+function orgColor(){
+    document.querySelector("#"+areaId).setAttribute("fill",fillcolor);
+}
+
+const jsonData = await fetch("data.json");
+myJson = await
+</script>
+
+</html>
